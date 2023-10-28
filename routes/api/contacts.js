@@ -54,11 +54,11 @@ router.delete("/:contactId", async (req, res, next) => {
 
 router.put("/:contactId", async (req, res, next) => {
   const { id } = req.params;
-  const result = schema.validate(req.body);
-  if (result.error) {
-    res.status(400).json({ message: result.error.details[0].message });
+  const contactDetails = schema.validate(req.body);
+  if (contactDetails.error) {
+    res.status(400).json({ message: contactDetails.error.details[0].message });
   } else {
-    const updatedContact = await updateContact(id, { name, email, phone });
+    const updatedContact = await updateContact(id, { contactDetails });
     if (updatedContact) {
       res.status(200).json(updatedContact);
     } else {
