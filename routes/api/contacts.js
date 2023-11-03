@@ -1,25 +1,27 @@
-const express = require('express')
+import express from "express";
+import Joi from "joi";
+const router = express.Router();
 
-const router = express.Router()
+import { indexContacts } from "../../controllers/indexContacts.js";
+import { updateContacts } from "../../controllers/contacts/updateContacts.js";
+import { removeContacts } from "../../controllers/deleteContacts.js";
+import { addNewContact } from "../../controllers/contacts/createContacts.js";
+import { contactById } from "../../controllers/contacts/showContacts.js";
 
-router.get('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+export const schema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().email().required(),
+  phone: Joi.string().required(),
+});
 
-router.get('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get("/", indexContacts);
 
-router.post('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get("/:contactId", contactById);
 
-router.delete('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post("/", addNewContact);
 
-router.put('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.delete("/:contactId", removeContacts);
 
-module.exports = router
+router.put("/:contactId", updateContacts);
+
+export { router };
