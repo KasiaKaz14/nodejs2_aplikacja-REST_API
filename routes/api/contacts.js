@@ -1,15 +1,14 @@
-const express = require("express");
-
+import express from "express";
+import Joi from "joi";
 const router = express.Router();
-const Joi = require("joi");
 
-const {
+import {
   listContacts,
   getContactById,
   addContact,
   removeContact,
   updateContact,
-} = require("../../models/contacts.js");
+} from "../../models/contacts.js";
 
 const schema = Joi.object({
   name: Joi.string().required(),
@@ -67,4 +66,4 @@ router.put("/:contactId", async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export { router };

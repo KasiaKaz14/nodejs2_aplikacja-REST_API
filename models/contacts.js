@@ -1,6 +1,6 @@
-const fs = require("fs");
-const { join } = require("path");
-const contactsPath = join(__dirname, "/contacts.json");
+import fs from "fs";
+import { join } from "path";
+const contactsPath = path.join(process.cwd(), "/routes/api/db/contacts.json");
 
 const listContacts = async () => {
   const data = fs.readFile(contactsPath, "utf-8");
@@ -38,7 +38,7 @@ const updateContact = async (contactId, body) => {
   return updatedContact;
 };
 
-module.exports = {
+export {
   listContacts,
   getContactById,
   removeContact,
