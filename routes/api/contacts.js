@@ -1,12 +1,12 @@
-import express from "express";
-import Joi from "joi";
-const router = express.Router();
-
 import { indexContacts } from "../../controllers/indexContacts.js";
 import { updateContacts } from "../../controllers/contacts/updateContacts.js";
 import { removeContacts } from "../../controllers/deleteContacts.js";
 import { addNewContact } from "../../controllers/contacts/createContacts.js";
 import { contactById } from "../../controllers/contacts/showContacts.js";
+
+import express from "express";
+import Joi from "joi";
+const router = express.Router();
 
 export const schema = Joi.object({
   name: Joi.string().required(),

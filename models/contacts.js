@@ -1,5 +1,5 @@
 import fs from "fs";
-import { join } from "path";
+import path from "path";
 const contactsPath = path.join(process.cwd(), "/routes/api/db/contacts.json");
 
 const listContacts = async () => {

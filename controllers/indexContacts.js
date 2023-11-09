@@ -1,4 +1,4 @@
-import { listContacts } from "../../models/contacts";
+import { listContacts } from "../models/contacts";
 
 async function indexContacts(req, res, next) {
   const contacts = await listContacts();
