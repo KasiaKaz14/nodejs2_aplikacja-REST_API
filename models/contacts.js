@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import mongoose from "mongoose";
 const contactsPath = path.join(process.cwd(), "/routes/api/db/contacts.json");
 
 const listContacts = async () => {
@@ -37,6 +38,43 @@ const updateContact = async (contactId, body) => {
   fs.writeFile(contactsPath, JSON.stringify(updatedContacts));
   return updatedContact;
 };
+
+mongoose.connect("mongodb://localhost:27017/contacts", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on("error", (err) => {
+  console.error("Database connection error:", err);
+  process.exit(1);
+});
+
+mongoose.connection.once("open", () => {
+  console.log("Database connection successful");
+});
+
+const contactSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, "Set name for contact"],
+  },
+  email: String,
+  phone: String,
+  favorite: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const Contact = mongoose.model("Contact", contactSchema);
+
+Contact.find()
+  .then((contacts) => {
+    console.log("Contacts:", contacts);
+  })
+  .catch((err) => {
+    console.error("Error retrieving contacts:", err);
+  });
 
 export {
   listContacts,
