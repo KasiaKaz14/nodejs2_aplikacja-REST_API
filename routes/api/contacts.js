@@ -1,9 +1,9 @@
-import { indexContacts } from "../../controllers/indexContacts.js";
-import { updateContacts } from "../../controllers/contacts/updateContacts.js";
-import { removeContacts } from "../../controllers/deleteContacts.js";
-import { addNewContact } from "../../controllers/contacts/createContacts.js";
-import { contactById } from "../../controllers/contacts/showContacts.js";
-import { favouriteContacts } from "../../controllers/contacts/favouriteContact.js";
+import { indexContacts } from "#controllers/indexContacts.js";
+import { updateContacts } from "#controllers/contacts/updateContacts.js";
+import { removeContacts } from "#controllers/deleteContacts.js";
+import { addNewContact } from "#controllers/contacts/createContacts.js";
+import { contactById } from "#controllers/contacts/showContacts.js";
+import { favouriteContacts } from "#controllers/contacts/favouriteContact.js";
 
 import express from "express";
 import Joi from "joi";
@@ -27,4 +27,4 @@ router.put("/:contactId", updateContacts);
 
 router.patch("/api/contacts/:contactId/favorite", favouriteContacts);
 
-export { router };
+export { router as contactsRouter };

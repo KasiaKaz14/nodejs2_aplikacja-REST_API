@@ -1,7 +1,7 @@
 {
   "name": "template",
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./server.js",
@@ -28,5 +28,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "5.2.0",
     "nodemon": "2.0.15"
+  },
+  "imports": {
+    "#controllers/*": "./controllers/*",
+    "#models/*": "./models/*"
   }
 }

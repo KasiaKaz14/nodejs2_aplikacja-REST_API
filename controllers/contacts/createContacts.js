@@ -1,5 +1,5 @@
-import { addContact } from "../../models/contacts";
-import { schema } from "../../routes/api/contacts";
+import { addContact } from "../../repositories/contacts/files.js";
+import { schema } from "../../routes/api/contacts.js";
 
 async function addNewContact(req, res, next) {
   const result = schema.validate(req.body);

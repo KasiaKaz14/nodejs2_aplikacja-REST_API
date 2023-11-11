@@ -1,5 +1,5 @@
-import { updateContact } from "../../models/contacts";
-import { schema } from "../../routes/api/contacts";
+import { updateContact } from "../../repositories/contacts/files.js";
+import { schema } from "../../routes/api/contacts.js";
 
 async function updateContacts(req, res, next) {
   const { id } = req.params;
