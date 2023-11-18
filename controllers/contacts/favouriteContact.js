@@ -1,4 +1,4 @@
-import { listContacts } from "../../repositories/contacts/files.js";
+import { listContacts } from "#models/contact.js";
 
 function updateStatusContact(contactId, favorite) {
   const contact = listContacts.find((c) => c.contactId === contactId);

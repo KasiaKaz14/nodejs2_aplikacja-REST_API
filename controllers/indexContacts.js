@@ -1,4 +1,4 @@
-import { listContacts } from "../repositories/contacts/files.js";
+import { listContacts } from "#models/contact.js";
 
 async function indexContacts(req, res, next) {
   const contacts = await listContacts();

@@ -1,4 +1,4 @@
-import { updateContact } from "../../repositories/contacts/files.js";
+import { updateContact } from "#models/contact.js";
 import { schema } from "../../routes/api/contacts.js";
 
 async function updateContacts(req, res, next) {

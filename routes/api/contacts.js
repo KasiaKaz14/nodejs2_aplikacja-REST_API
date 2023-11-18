@@ -5,8 +5,9 @@ import { addNewContact } from "#controllers/contacts/createContacts.js";
 import { contactById } from "#controllers/contacts/showContacts.js";
 import { favouriteContacts } from "#controllers/contacts/favouriteContact.js";
 
-import express from "express";
 import Joi from "joi";
+import express from "express";
+
 const router = express.Router();
 
 export const schema = Joi.object({
@@ -15,7 +16,7 @@ export const schema = Joi.object({
   phone: Joi.string().required(),
 });
 
-router.get("/", indexContacts);
+router.get("/contacts", indexContacts);
 
 router.get("/:contactId", contactById);
 
