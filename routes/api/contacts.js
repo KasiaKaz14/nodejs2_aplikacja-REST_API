@@ -1,25 +1,17 @@
-const express = require('express')
+import express from "express";
+import { signUp } from "#controllers/signup";
+import { loginUser } from "#controllers/login";
+import { authToken } from "../../auth/checkToken";
+import { current } from "#controllers/login";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post("/users/signup", signUp);
 
-router.get('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post("/users/login", loginUser);
 
-router.post('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get("users/logout", authToken);
 
-router.delete('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get("/users/current", current);
 
-router.put('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-module.exports = router
+export { router as contactsRouter };
