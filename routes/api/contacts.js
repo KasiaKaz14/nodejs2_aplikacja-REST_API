@@ -1,25 +1,11 @@
-const express = require('express')
+import express from "express";
+import { verify } from "#controllers/verify.js";
+import { sendUserVerificationMail } from "#controllers/user.service.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.get("/users/verify/:verificationToken", verify);
 
-router.get('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+router.post("/users/verify", sendUserVerificationMail);
 
-router.post('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-router.delete('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-router.put('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-module.exports = router
+export { router as contactsRouter };
