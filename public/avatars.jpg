@@ -1,0 +1,3 @@
+ curl -X POST -F 'avatar=@/C:\Users\k_asi\OneDrive\Obrazy\hot-air-balloon-g62085b8fc_1280.jpg'
+ 
+  http://localhost:3000/upload
