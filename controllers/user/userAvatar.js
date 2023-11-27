@@ -5,7 +5,7 @@ import jimp from "jimp";
 const app = express();
 const upload = multer({ dest: "tmp/" });
 
-app.patch("/users/avatars", upload.single("avatar"), async (req, res) => {
+async function uploadAvatar(req, res) {
   try {
     const user = req.user;
 
@@ -26,4 +26,6 @@ app.patch("/users/avatars", upload.single("avatar"), async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
   }
-});
+}
+
+export { uploadAvatar };
