@@ -11,6 +11,8 @@ import { addNewContact } from "#controllers/createContacts";
 import { removeContacts } from "#controllers/deleteContacts";
 import { updateContacts } from "#controllers/updateContacts";
 import { favouriteContacts } from "#controllers/favouriteContact";
+import { verify } from "#controllers/verify";
+import { sendUserVerificationMail } from "#controllers/user.service";
 
 const router = express.Router();
 
@@ -43,5 +45,9 @@ router.post("/users/login", loginUser);
 router.get("users/logout", authToken);
 
 router.get("/users/current", current);
+
+router.get("/users/verify/:verificationToken", verify);
+
+router.post("/users/verify", sendUserVerificationMail);
 
 export { router as contactsRouter };
